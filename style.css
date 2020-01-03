@@ -1,0 +1,12 @@
+html,
+body {
+  width: 8.5in;
+  height: 11in;
+  box-sizing: border-box;
+  background: grey;
+  margin: 0 auto;
+}
+body {
+  background-color: #eeeeee;
+  color: #111111;
+}
