@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.js"
+      integrity="sha256-44/UcMYgn8vlo2B5ydHmUcy9SXMt7bg2RhftDR35kY8="
+      crossorigin="anonymous"
+    ></script>
+    <title>Resume Generator</title>
+  </head>
+  <body>
+    <form id="markdown-form">
+      <input type="file" id="markdown-input" accept=".md" />
+      <button type="submit">Submit</button>
+    </form>
+    <div id="resume-container"></div>
+    <script src="./parser.js" />
+  </body>
+</html>

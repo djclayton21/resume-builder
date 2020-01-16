@@ -1,4 +1,4 @@
-# Dan Clayton Resume
+# Dan Clayton Resume Template
 
 ## Dan Clayton
 
@@ -48,7 +48,7 @@ Full-stack CRUD app with token-based user authentication, created to help small 
 ### Stock Market Tracking
 
 **React, Axios, JSX, CSS**  
-[dcstockmarket.surge.sh](http://dcstockmarket.surge.sh)]  
+[dcstockmarket.surge.sh](http://dcstockmarket.surge.sh)  
 [github](http://github.com/djclayton21/scheduling-tool)
 
 Front end application to search for, research, and track stock market data using a pubic API
