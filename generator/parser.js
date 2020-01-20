@@ -1,24 +1,36 @@
-const resume = document.querySelector('#resume-container');
-const markdownInput = document.querySelector('#markdown-input');
-const markdownForm = document.querySelector('#markdown-form');
-
 const showdown = new window.showdown.Converter();
 const reader = new FileReader();
+
+const uploadForm = document.querySelector('#upload-form');
+const mdTextArea = document.querySelector('#markdown-textarea');
+const preview = document.querySelector('#preview');
+
+//upload markdown file
 reader.onload = event => {
   const mdText = event.target.result;
-  const mdHtml = showdown.makeHtml(mdText);
-  //do we need to clean?
-  resume.innerHTML = mdHtml;
+  //TODO: validate markdown
+  mdTextArea.value = mdText;
+  const html = showdown.makeHtml(mdText);
+  preview.innerHTML = html;
 };
 reader.onerror = () => {
   console.error('File could not be loaded');
 };
-
-markdownForm.addEventListener('submit', event => {
+uploadForm.addEventListener('submit', event => {
   event.preventDefault();
-  const file = markdownInput.files[0];
-  reader.readAsText(file);
+  const upload = event.target.querySelector('#upload-input').files[0];
+  //TODO: validate file type
+  reader.readAsText(upload);
 });
-//read file function
-//convert file function
-//transform file function
+
+//convert to html and transform
+mdTextArea.addEventListener('input', event => {
+  const mdText = event.target.value;
+  //TODO: validate and clean input. #yolo
+  const html = showdown.makeHtml(mdText);
+  preview.innerHTML = html;
+});
+// function wrapSections(html) {
+//   //wrap each h2 in a section tag with a matching id
+//   //wrap each section
+// }

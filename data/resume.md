@@ -9,7 +9,7 @@
 ## Contact
 
 _(213)-814-8991_  
-<clayton.daniel.j@gmail.com>  
+clayton.daniel.j@gmail.com  
 [linkedin.com/in/djclayton21](http://linkedin.com/in/djclayton21)  
 [github.com/djclayton21](http://github.com/djclayton21)
 
