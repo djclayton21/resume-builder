@@ -1,0 +1,12 @@
+body * {
+  visibility: hidden;
+}
+#preview,
+#preview * {
+  visibility: visible;
+}
+#preview {
+  position: absolute;
+  left: 0;
+  top: 0;
+}

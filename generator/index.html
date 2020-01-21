@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./layout.css" />
+    <link href="./print_styled.css" media="print" rel="stylesheet" />
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.js"
       integrity="sha256-44/UcMYgn8vlo2B5ydHmUcy9SXMt7bg2RhftDR35kY8="
@@ -13,7 +14,7 @@
     <title>Resume Generator</title>
   </head>
   <body>
-    <div class="input-container">
+    <div id="controls">
       <form id="upload-form">
         <input
           type="file"
@@ -22,16 +23,25 @@
         />
         <button type="submit">Submit</button>
       </form>
+      <span id="fileName">File Name</span>
+      <button id="print-button">Print</button>
+    </div>
+    <main>
       <textarea
         id="markdown-textarea"
-        cols="80"
-        rows="60"
-        style="resize: none;"
-      >
-Enter Markdown Here</textarea
-      >
-    </div>
-    <div id="preview"></div>
-    <script src="./parser.js" />
+        cols="50"
+        rows="20"
+        style="height: 600px; width: 400px"
+        placeholder="Enter markdown here, or upload a file.
+  
+The top level heading (h1) will be used as the file name.
+
+Each content section should start with a second level heading (h2).
+
+The first content section will be used as the header."
+      ></textarea>
+      <div id="preview"></div>
+    </main>
+    <script src="./app.js" />
   </body>
 </html>

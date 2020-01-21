@@ -1,0 +1,31 @@
+html,
+body {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr;
+  background: #222222;
+}
+main {
+  display: flex;
+  padding: 5px;
+}
+#preview {
+  height: 11in;
+  width: 8.5in;
+  overflow: hidden;
+  background: #eeeeee;
+}
+
+#controls {
+  display: flex;
+  background: #eeeeee;
+}
