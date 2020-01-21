@@ -48,25 +48,24 @@ function convert(html) {
       resume.fileName = element.textContent.split(' ').join('_');
     } else if (element.tagName === 'H2') {
       const newSection = document.createElement('section');
-      newSection.className = `section ${element.textContent
-        .split(' ')
-        .join('_')}`;
+      newSection.id = `section${resume.sections.length + 1}`;
       newSection.appendChild(element);
-      resume.sections.unshift(newSection);
+      resume.sections.push(newSection);
     } else if (resume.sections.length) {
-      resume.sections[0].appendChild(element);
+      resume.sections[resume.sections.length - 1].appendChild(element);
     }
   });
-  resume.sections.reverse();
   return resume;
 }
 //display resume to preview
 function display(resume) {
+  fileName.textContent = resume.fileName;
   document.title = resume.fileName;
+  preview.innerHTML = '';
   resume.sections.forEach(section => preview.appendChild(section));
 }
 
-//print styled version
+//print current version
 printButton.addEventListener('click', () => {
   window.print();
 });
