@@ -1,3 +1,88 @@
+/* variables */
+#preview {
+  --main-color: green;
+  --highlight-color: blue;
+  --bg-color: #eeeeee;
+  --text-color: #111111;
+}
+/* page */
+#preview {
+  font-family: 'Roboto', sans-serif;
+  background: var(--bg-color);
+  margin: 0 auto;
+  color: var(--text-color);
+}
+.page {
+  background: var(--bg-color);
+  width: 8.5in;
+  height: 11in;
+}
+/* layout */
+.page1 {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  grid-template-rows: 20% auto;
+}
 #section1 {
-  background: green;
+  grid-column: 1/-1;
+  background: var(--main-color);
+}
+#section2,
+#section3,
+#section4,
+#section5 {
+  grid-column: 1/2;
+  text-align: right;
+  border-right: 2px solid var(--main-color);
+}
+#section6 {
+  grid-row: 2/5;
+  grid-column: 2/3;
+}
+/* general */
+section {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+h3 {
+  font-weight: 900;
+}
+a {
+  color: var(--highlight-color);
+  text-decoration: none;
+}
+p,
+li {
+  margin-top: 1rem;
+}
+
+/* header */
+#section1 {
+  text-align: center;
+}
+#section1 h2 {
+  font-size: 3rem;
+  margin: 0;
+  color: var(--bg-color);
+}
+#section1 h3 {
+  font-size: 1.25rem;
+  color: var(--bg-color);
+}
+
+/* right side */
+#section6 h3, #section7 h3 {
+  margin-top: 1rem;
+}
+#section6 h3:first-child, #section7 h3:first-child{
+  margin-top: 0;
 }

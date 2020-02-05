@@ -19,10 +19,8 @@ main {
   padding: 5px;
 }
 #preview {
-  height: 11in;
   width: 8.5in;
-  overflow: hidden;
-  background: #eeeeee;
+  min-height: 11in;
 }
 
 #controls {
