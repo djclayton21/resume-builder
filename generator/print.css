@@ -9,6 +9,12 @@ body * {
   position: absolute;
   left: 0;
   top: 0;
-  width: 8.5in;
-  height: fit-content;
+}
+@page {
+  size: 8.5in 11in;
+  margin: .5in 0;
+}
+
+@page :first {
+  margin-top: 0;
 }

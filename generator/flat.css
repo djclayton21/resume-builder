@@ -3,7 +3,7 @@
   font-family: sans-serif;
   color: black;
   background: white;
-  padding: 1in;
+  padding: .5in 1in;
   line-height: 1.2rem;
 }
 
@@ -13,6 +13,7 @@
 #section1 h3 {
   font-size: 1.5rem;
 }
+
 h2 {
   text-transform: uppercase;
   font-size: 1.5rem;
@@ -45,9 +46,20 @@ p:last-child, ul:last-child {
 
 ul {
   list-style: disc inside none;
+  break-inside: avoid-page;
+  display: flex;
+  flex-direction: column;
+  flex-flow: row wrap;
+}
+li {
+  min-width: 50%;
+}
+section {
   break-inside: avoid;
 }
 
-
+a {
+  color: blue;
+}
 
 
