@@ -1,2 +1,53 @@
+/* layout */
 #preview {
+  font-family: sans-serif;
+  color: black;
+  background: white;
+  padding: 1in;
+  line-height: 1.2rem;
 }
+
+#section1 h2 {
+  font-size: 2rem;
+}
+#section1 h3 {
+  font-size: 1.5rem;
+}
+h2 {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 1rem 0;
+}
+h3 {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 0.8rem 0;
+}
+
+strong {
+  font-weight: 600;
+}
+
+em {
+  font-style: italic;
+}
+
+p, ul {
+  margin: 1rem 0;
+}
+p:first-child, ul:first-child {
+  margin-top: 0;
+}
+p:last-child, ul:last-child {
+  margin-bottom: 0;
+}
+
+ul {
+  list-style: disc inside none;
+  break-inside: avoid;
+}
+
+
+
+
