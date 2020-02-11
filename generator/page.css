@@ -20,10 +20,13 @@ main {
 }
 #preview {
   width: 8.5in;
+  background: #eeeeee;
+  height: fit-content;
   min-height: 11in;
 }
 
 #controls {
   display: flex;
   background: #eeeeee;
+  justify-content: space-evenly;
 }

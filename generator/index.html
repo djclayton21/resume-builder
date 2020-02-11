@@ -8,9 +8,10 @@
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="page.css" />
-    <link rel="stylesheet" href="resume.css" />
+    <link rel="stylesheet" href="flat.css" title="flat" class="alternate" />
+    <link rel="stylesheet" href="fancy.css" title="fancy" class="alternate" />
     <link rel="stylesheet" href="print.css" media="print" />
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.js"
@@ -28,6 +29,10 @@
           accept="text/markdown, .md, .txt"
         />
         <button type="submit">Submit</button>
+      </form>
+      <form id="style-form">
+        <input type="radio" name="style" value="fancy" />Fancy
+        <input type="radio" name="style" value="flat" />Flat
       </form>
       <label for="fileName">File Name: </label>
       <span id="fileName"></span>

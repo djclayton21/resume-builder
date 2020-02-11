@@ -48,7 +48,7 @@ function convert(html) {
 
   elements.forEach(element => {
     if (element.tagName === 'H1') {
-      //
+      //h1 to filename
       resume.fileName = element.textContent.split(' ').join('_');
     } else if (element.tagName === 'H2') {
       //create a new section for h2s
@@ -56,11 +56,6 @@ function convert(html) {
       newSection.id = `section${resume.sections.length + 1}`;
       newSection.appendChild(element);
       resume.sections.push(newSection);
-    } else if (
-      element.tagName === 'P' &&
-      element.textContent === '\\pagebreak'
-    ) {
-      //TODO: pagebreaks
     } else if (resume.sections.length) {
       //for other elements, append to last section
       resume.sections[resume.sections.length - 1].appendChild(element);
@@ -75,14 +70,26 @@ function display(resume) {
   document.title = resume.fileName;
   preview.innerHTML = '';
 
-  const page1 = document.createElement('div');
-  page1.classList = 'page page1';
-  preview.appendChild(page1);
-  let currentPage = page1;
-  //TODO: pages/ columns
-  resume.sections.forEach(section => currentPage.appendChild(section));
+  resume.sections.forEach(section => preview.appendChild(section));
 }
 
+//change style
+const resumeStyles = document.querySelectorAll('.alternate');
+resumeStyles.forEach(style => (style.disabled = true));
+function selectStyle() {
+  const newStyle = this.style.value;
+  resumeStyles.forEach(style => {
+    if (style.title === newStyle) {
+      style.disabled = false;
+    } else {
+      style.disabled = true;
+    }
+  });
+}
+
+const styleForm = document.querySelector('#style-form');
+styleForm.addEventListener('change', selectStyle);
+console.dir(styleForm);
 //print current version
 printButton.addEventListener('click', () => {
   window.print();
