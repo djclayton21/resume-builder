@@ -73,7 +73,7 @@ function display(resume) {
   resume.sections.forEach(section => preview.appendChild(section));
 }
 
-//change style
+//change resume style
 const resumeStyles = document.querySelectorAll('.alternate');
 resumeStyles.forEach(style => (style.disabled = true));
 function selectStyle() {

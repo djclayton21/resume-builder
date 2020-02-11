@@ -12,11 +12,11 @@ body {
   display: grid;
   grid-template-rows: auto 1fr;
   grid-template-columns: 1fr;
-  background: #222222;
 }
 main {
   display: flex;
-  padding: 5px;
+  justify-content: center;
+  background: #222222;
 }
 #preview {
   width: 8.5in;

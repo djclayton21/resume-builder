@@ -8,14 +8,34 @@
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./reset.css" />
-    <link rel="stylesheet" href="./style.css" />
-
-    <title>Resume Generator</title>
+    <link rel="stylesheet" href="../generator/reset.css" />
+    <link rel="stylesheet" href="../generator/page.css" />
+    <link
+      rel="stylesheet"
+      href="../generator/flat.css"
+      title="flat"
+      class="alternate"
+    />
+    <link
+      rel="stylesheet"
+      href="../generator/fancy.css"
+      title="fancy"
+      class="alternate"
+    />
+    <link rel="stylesheet" href="../generator/print.css" media="print" />
+    <title>CSS Workspace</title>
   </head>
   <body>
-    <div id="preview">
-      <div class="page page1">
+    <!-- Copy your generated html here to work on css directly -->
+    <div id="controls">
+      <form id="style-form">
+        <input type="radio" name="style" value="fancy" />Fancy
+        <input type="radio" name="style" value="flat" />Flat
+      </form>
+      <button id="print-button">Print</button>
+    </div>
+    <main>
+      <div id="preview">
         <section id="section1">
           <h2 id="danclayton">Dan Clayton</h2>
           <h3 id="developer">Developer</h3>
@@ -144,6 +164,31 @@
           </ul>
         </section>
       </div>
-    </div>
+    </main>
+    <script>
+      //change resume style
+      const resumeStyles = document.querySelectorAll('.alternate');
+      resumeStyles.forEach(style => (style.disabled = true));
+      function selectStyle() {
+        const newStyle = this.style.value;
+        resumeStyles.forEach(style => {
+          if (style.title === newStyle) {
+            style.disabled = false;
+          } else {
+            style.disabled = true;
+          }
+        });
+      }
+
+      const styleForm = document.querySelector('#style-form');
+      styleForm.addEventListener('change', selectStyle);
+      console.dir(styleForm);
+      //print current version
+      const printButton = document.querySelector('#print-button');
+
+      printButton.addEventListener('click', () => {
+        window.print();
+      });
+    </script>
   </body>
 </html>
