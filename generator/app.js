@@ -1,9 +1,8 @@
 //grab stuff
 const uploadForm = document.querySelector('#upload-form');
 const mdTextArea = document.querySelector('#markdown-textarea');
-const preview = document.querySelector('#preview');
+const previewContainer = document.querySelector('#preview');
 const fileName = document.querySelector('#fileName');
-const printButton = document.querySelector('#print-button');
 
 //file reader
 const showdown = new window.showdown.Converter();
@@ -14,7 +13,7 @@ mdReader.onload = event => {
   mdTextArea.value = mdText;
   const html = showdown.makeHtml(mdText);
   const resume = convert(html); //create dom nodes and wrap h2s in sections
-  display(resume);
+  preview(resume);
 };
 
 mdReader.onerror = () => {
@@ -25,7 +24,7 @@ mdReader.onerror = () => {
 uploadForm.addEventListener('submit', event => {
   event.preventDefault();
   const upload = event.target.querySelector('#upload-input').files[0];
-  //TODO: validate file type
+  //TODO: validate
   mdReader.readAsText(upload);
 });
 
@@ -35,7 +34,7 @@ mdTextArea.addEventListener('input', event => {
   //TODO: validate and clean input. #yolo
   const html = showdown.makeHtml(mdText);
   const resume = convert(html); //create dom nodes and wrap h2s in sections
-  display(resume);
+  preview(resume);
 });
 
 //convert text to html and transform
@@ -63,19 +62,21 @@ function convert(html) {
   });
   return resume;
 }
-
-//display resume to preview
-function display(resume) {
+//preview resume to preview
+function preview(resume) {
   fileName.textContent = resume.fileName;
   document.title = resume.fileName;
-  preview.innerHTML = '';
-
-  resume.sections.forEach(section => preview.appendChild(section));
+  previewContainer.innerHTML = '';
+  resume.sections.forEach(section => previewContainer.appendChild(section));
 }
 
 //change resume style
-const resumeStyles = document.querySelectorAll('.alternate');
+const resumeStyles = document.querySelectorAll('.resume-style');
 resumeStyles.forEach(style => (style.disabled = true));
+
+const styleForm = document.querySelector('#style-form');
+styleForm.addEventListener('change', selectStyle);
+
 function selectStyle() {
   const newStyle = this.style.value;
   resumeStyles.forEach(style => {
@@ -87,10 +88,8 @@ function selectStyle() {
   });
 }
 
-const styleForm = document.querySelector('#style-form');
-styleForm.addEventListener('change', selectStyle);
-console.dir(styleForm);
-//print current version
+//print preview window
+const printButton = document.querySelector('#print-button');
 printButton.addEventListener('click', () => {
   window.print();
 });

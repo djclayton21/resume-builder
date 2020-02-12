@@ -14,13 +14,13 @@
       rel="stylesheet"
       href="../generator/flat.css"
       title="flat"
-      class="alternate"
+      class="resume-style"
     />
     <link
       rel="stylesheet"
       href="../generator/fancy.css"
       title="fancy"
-      class="alternate"
+      class="resume-style"
     />
     <link rel="stylesheet" href="../generator/print.css" media="print" />
     <title>CSS Workspace</title>
@@ -184,7 +184,7 @@
     </main>
     <script>
       //change resume style
-      const resumeStyles = document.querySelectorAll('.alternate');
+      const resumeStyles = document.querySelectorAll('.resume-style');
       resumeStyles.forEach(style => (style.disabled = true));
       function selectStyle() {
         const newStyle = this.style.value;
