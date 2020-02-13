@@ -65,17 +65,21 @@ function convert(html) {
 //preview resume to preview
 function preview(resume) {
   fileName.textContent = resume.fileName;
-  document.title = resume.fileName;
+  updateFileName();
   previewContainer.innerHTML = '';
   resume.sections.forEach(section => previewContainer.appendChild(section));
 }
 
 //change resume style
 const resumeStyles = document.querySelectorAll('.resume-style');
-resumeStyles.forEach(style => (style.disabled = true));
-
 const styleForm = document.querySelector('#style-form');
 styleForm.addEventListener('change', selectStyle);
+
+resumeStyles.forEach(style => {
+  if (style.title !== styleForm.style.value) {
+    style.disabled = true;
+  }
+});
 
 function selectStyle() {
   const newStyle = this.style.value;
@@ -86,8 +90,24 @@ function selectStyle() {
       style.disabled = true;
     }
   });
+  updateFileName();
 }
 
+function updateFileName() {
+  const oldFileName = fileName.textContent;
+  const words = oldFileName.split('_');
+  //get style names
+  const styleNames = [];
+  resumeStyles.forEach(style => styleNames.push(style.title));
+  if (styleNames.includes(words[words.length - 1])) {
+    words.pop();
+    words.push(styleForm.style.value);
+  } else {
+    words.push(styleForm.style.value);
+  }
+  fileName.textContent = words.join('_');
+  document.title = fileName.textContent;
+}
 //print preview window
 const printButton = document.querySelector('#print-button');
 printButton.addEventListener('click', () => {
