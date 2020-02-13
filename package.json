@@ -1,22 +1,22 @@
 {
-  "name": "resume",
+  "name": "resume-generator",
   "version": "1.0.0",
-  "description": "How many versions of my resume can I make, and which will be easiest to edit on the fly?",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/djclayton21/resume.git"
+    "url": "git+https://github.com/djclayton21/resume-builder.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/djclayton21/resume/issues"
+    "url": "https://github.com/djclayton21/resume-builder/issues"
   },
-  "homepage": "https://github.com/djclayton21/resume#readme",
+  "homepage": "https://github.com/djclayton21/resume-builder#readme",
   "devDependencies": {
     "eslint": "^6.8.0"
   }
