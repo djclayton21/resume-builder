@@ -27,20 +27,12 @@
   </head>
   <body>
     <div id="controls">
-      <form id="upload-form">
-        <input
-          type="file"
-          id="upload-input"
-          accept="text/markdown, .md, .txt"
-        />
-        <button type="submit">Submit</button>
-      </form>
+      <input type="file" id="file-upload" accept="text/markdown, .md, .txt" />
       <form id="style-form">
-        <input type="radio" name="style" value="flat" checked/>Flat
-        <input type="radio" name="style" value="fancy" />Fancy
+        <input type="radio" name="style" value="flat" checked />flat
+        <input type="radio" name="style" value="fancy" />fancy
       </form>
-      <label for="fileName">File Name: </label>
-      <span id="fileName"></span>
+      <label for="fileName">File Name: <span id="fileName"></span></label>
       <button id="print-button">Print</button>
     </div>
     <main>

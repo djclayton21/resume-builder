@@ -184,11 +184,11 @@
     </main>
     <script>
       //change resume style
-      const resumeStyles = document.querySelectorAll('.resume-style');
-      resumeStyles.forEach(style => (style.disabled = true));
+      const resumeStylesheets = document.querySelectorAll('.resume-style');
+      resumeStylesheets.forEach(style => (style.disabled = true));
       function selectStyle() {
         const newStyle = this.style.value;
-        resumeStyles.forEach(style => {
+        resumeStylesheets.forEach(style => {
           if (style.title === newStyle) {
             style.disabled = false;
           } else {
