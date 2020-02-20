@@ -100,8 +100,8 @@ function selectStyle() {
 function updateFileName() {
   const heading = previewContainer.querySelector('h1').textContent;
   const words = heading.split(' ');
-  words.push('resume')
-  words.push(styleForm.style.value);//append current style selection
+  words.push('resume');
+  words.push(styleForm.style.value); //append current style selection
 
   fileName.textContent = words.join('_');
   document.title = fileName.textContent;
@@ -113,3 +113,7 @@ printButton.addEventListener('click', () => {
 });
 
 getFromLocal();
+
+// fetch('placeholder.md')
+//   .then(response => response.text())
+//   .then(text => console.log(text));

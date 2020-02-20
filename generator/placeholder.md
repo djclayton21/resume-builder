@@ -4,14 +4,14 @@
 
 ## Contact
 
-_phone_  
+_(555) 867-5309_  
 <email@email.com>  
 [linkedIn.com/in/username1234](https://linkedin.com/in/username1234)  
 [github.com/github_username](https://github.com/github_username)
 
 ## Summary
 
-I'm a new developer who learns stuff. Please give me a job.
+I do things and stuff, and hopefully they're the things and stuff that you are looking for in an employee.
 
 ## Skills
 
@@ -40,7 +40,7 @@ Salt Lake City, Utah
 ### Project name #1
 
 [live link](google.com)  
-[github link](github.com)  
+[github link](github.com)
 
 Description goes here. What is it? What does it do? What tech did you use for what? Why did you build it?
 
@@ -58,7 +58,7 @@ You can put in the things you want to do, and then check them off! Uses AI and m
 ### Instagram Clone
 
 [live link](google.com)  
-[github link](github.com)  
+[github link](github.com)
 
 Upload photos, comment, and like. Link your pets' accounts to your own, so that when someone follows them, you automatically show up in their feed as well!
 
@@ -82,4 +82,4 @@ _Palo Alto, CA_
 _2004 - present_
 
 - Connected billions of people together and made it so they can interact with little to no filter or consequence.
-- Empowered older generations to embarass grandchildren 250% more effeciently, at any time of year. 
+- Empowered older generations to embarass grandchildren 250% more effeciently, at any time of year.
