@@ -2,52 +2,74 @@
 const showdown = new window.showdown.Converter();
 const previewContainer = document.querySelector('#preview');
 const fileName = document.querySelector('#fileName');
+const resumeStylesheets = document.querySelectorAll('.resume-style');
+
 //setup file reader
 const mdReader = new FileReader();
 mdReader.onload = event => {
   const mdText = event.target.result;
-  //TODO: validate markdown
-  saveToLocal(mdText);
-  mdInputArea.value = mdText;
-
-  const html = showdown.makeHtml(mdText);
-  const resume = convert(html);
-  preview(resume);
+  handleMarkdownUpdate(mdText);
 };
 mdReader.onerror = () => {
   console.error('File could not be loaded');
 };
+//check for saved resume
+window.onload = () => {
+  localStorage.length ? getFromLocal() : getPlaceholder();
+};
 
-//upload and read markdown file
+// initialize resume style to flat
+resumeStylesheets.forEach(style => {
+  if (style.title !== 'flat') {
+    style.disabled = true;
+  }
+});
+
+//listen for mardown file upload and read
 const upload = document.querySelector('#file-upload');
 upload.addEventListener('change', event => {
   const file = event.target.files[0];
   mdReader.readAsText(file);
 });
-//handle changes to text area
+
+//handle markdown text
+function handleMarkdownUpdate(mdText) {
+  //TODO: validate/clean
+  mdInputArea.value = mdText;
+  const html = showdown.makeHtml(mdText);
+  const sections = convert(html);
+  preview(sections);
+  updateFileName();
+  saveToLocal(mdText);
+}
+//listen for edits
 const mdInputArea = document.querySelector('#markdown-textarea');
 mdInputArea.addEventListener('input', event => {
   const mdText = event.target.value;
-  //TODO: validate and clean input. #yolo
-  saveToLocal(mdText);
-  const html = showdown.makeHtml(mdText);
-  const resume = convert(html); //create dom nodes and wrap h2s in sections
-  preview(resume);
+  handleMarkdownUpdate(mdText);
 });
 
 //local storage
-function saveToLocal(mdText) {
-  localStorage.setItem('mdResume', mdText);
+function saveToLocal(text) {
+  localStorage.setItem('mdResume', text);
 }
 function getFromLocal() {
   const mdText = localStorage.getItem('mdResume');
-  mdInputArea.value = mdText;
-  const html = showdown.makeHtml(mdText);
-  const resume = convert(html);
-  preview(resume);
+  handleMarkdownUpdate(mdText);
+}
+//blank resume
+document.querySelector('#new-button').addEventListener('click', handleNew);
+function handleNew() {
+  const confirm = window.confirm(
+    'All unsaved changest will be lost. Are you sure?'
+  );
+  if (confirm) {
+    localStorage.clear();
+    getPlaceholder();
+  }
 }
 
-//convert text to html and transform
+//process html elements into sections
 function convert(html) {
   const resumeSections = [];
 
@@ -69,22 +91,17 @@ function convert(html) {
   });
   return resumeSections;
 }
-//preview resume to preview
+
+//display sections to preview
 function preview(sections) {
   previewContainer.innerHTML = '';
   sections.forEach(section => previewContainer.appendChild(section));
-  updateFileName();
 }
-//change resume style
-const resumeStylesheets = document.querySelectorAll('.resume-style');
+
+//change resume styles
 const styleForm = document.querySelector('#style-form');
 styleForm.addEventListener('change', selectStyle);
 
-resumeStylesheets.forEach(style => {
-  if (style.title !== styleForm.style.value) {
-    style.disabled = true;
-  }
-});
 function selectStyle() {
   const newStyle = this.style.value;
   resumeStylesheets.forEach(style => {
@@ -96,7 +113,8 @@ function selectStyle() {
   });
   updateFileName();
 }
-//add current style to the end of filename
+
+//document filename/title
 function updateFileName() {
   const heading = previewContainer.querySelector('h1').textContent;
   const words = heading.split(' ');
@@ -106,14 +124,16 @@ function updateFileName() {
   fileName.textContent = words.join('_');
   document.title = fileName.textContent;
 }
-//print preview window
+
+//print (and save pdf)
 const printButton = document.querySelector('#print-button');
 printButton.addEventListener('click', () => {
   window.print();
 });
 
-getFromLocal();
-
-// fetch('placeholder.md')
-//   .then(response => response.text())
-//   .then(text => console.log(text));
+//get placeholder resume
+function getPlaceholder() {
+  fetch('placeholder.md')
+    .then(response => response.text())
+    .then(text => handleMarkdownUpdate(text));
+}
