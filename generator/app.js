@@ -71,7 +71,10 @@ function handleNew() {
 //save markdown file
 document.querySelector('#save-button').addEventListener('click', saveMarkdown);
 function saveMarkdown() {
-  const mdFile = new File([mdInputArea.value], `${fileName.textContent}.md`, {
+  const name =
+    fileName.textContent.slice(0, fileName.textContent.lastIndexOf('_')) +
+    '_content';
+  const mdFile = new File([mdInputArea.value], `${name}.md`, {
     type: 'text/markdown'
   });
   console.dir(mdFile);
@@ -97,7 +100,12 @@ function convert(html) {
       //create a new section for h2s
       const newSection = document.createElement('section');
       newSection.id = `section${resumeSections.length + 1}`;
-      newSection.classList.add(`section-${element.textContent.split(' ').join('_').toLowerCase()}`);
+      newSection.classList.add(
+        `section-${element.textContent
+          .split(' ')
+          .join('_')
+          .toLowerCase()}`
+      );
       newSection.appendChild(element);
       resumeSections.push(newSection);
     } else if (resumeSections.length) {
