@@ -3,6 +3,7 @@ const showdown = new window.showdown.Converter();
 const previewContainer = document.querySelector('#preview');
 const fileName = document.querySelector('#fileName');
 const resumeStylesheets = document.querySelectorAll('.resume-style');
+const mdInputArea = document.querySelector('#markdown-textarea');
 
 //setup file reader
 const mdReader = new FileReader();
@@ -43,7 +44,6 @@ function handleMarkdownUpdate(mdText) {
   saveToLocal(mdText);
 }
 //listen for edits
-const mdInputArea = document.querySelector('#markdown-textarea');
 mdInputArea.addEventListener('input', event => {
   const mdText = event.target.value;
   handleMarkdownUpdate(mdText);
@@ -57,7 +57,7 @@ function getFromLocal() {
   const mdText = localStorage.getItem('mdResume');
   handleMarkdownUpdate(mdText);
 }
-//blank resume
+//new resume
 document.querySelector('#new-button').addEventListener('click', handleNew);
 function handleNew() {
   const confirm = window.confirm(
@@ -67,6 +67,21 @@ function handleNew() {
     localStorage.clear();
     getPlaceholder();
   }
+}
+//save markdown
+document.querySelector('#save-button').addEventListener('click', saveMarkdown);
+function saveMarkdown() {
+  const mdFile = new File([mdInputArea.value], `${fileName.textContent}.md`, {
+    type: 'text/markdown'
+  });
+  console.dir(mdFile);
+  const url = URL.createObjectURL(mdFile);
+  const downloadLink = document.createElement('a');
+  downloadLink.setAttribute('href', url);
+  downloadLink.setAttribute('download', mdFile.name);
+  downloadLink.click();
+  downloadLink.remove();
+  URL.revokeObjectURL(url);
 }
 
 //process html elements into sections
