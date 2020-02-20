@@ -99,16 +99,17 @@ function convert(html) {
     if (element.tagName === 'H2' || element.tagName === 'H1') {
       //create a new section for h2s
       const newSection = document.createElement('section');
-      newSection.id = `section${resumeSections.length + 1}`;
+      newSection.id = `section-${resumeSections.length + 1}`;
       newSection.classList.add(
-        `section-${element.textContent
+        element.textContent
           .split(' ')
           .join('_')
-          .toLowerCase()}`
+          .toLowerCase()
       );
       newSection.appendChild(element);
       resumeSections.push(newSection);
     } else if (resumeSections.length) {
+      //sections before the first h1 or h2 will be dropped
       //for other elements, append to last section
       resumeSections[resumeSections.length - 1].appendChild(element);
     }
