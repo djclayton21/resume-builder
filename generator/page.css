@@ -9,24 +9,51 @@ body {
 }
 
 body {
+  font-family: sans-serif;
   display: grid;
   grid-template-rows: auto 1fr;
-  grid-template-columns: 1fr;
-}
-main {
-  display: flex;
-  justify-content: center;
+  grid-template-columns: auto auto;
   background: #222222;
+  width: 100%;
+  padding: 1rem;
+  column-gap: 1rem;
 }
+
 #preview {
   width: 8.5in;
-  background: #eeeeee;
+  margin: 0 auto;
   height: fit-content;
   min-height: 11in;
+  grid-column: 2/3;
+  grid-row: 1/-1;
 }
 
 #controls {
   display: flex;
   background: #eeeeee;
-  justify-content: space-evenly;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: fit-content;
+  max-width: 750px;
+  grid-row: 1/2;
+  grid-column: 1/2;
+  padding: 1rem;
+}
+#controls > * {
+  margin-top: 0.5rem;
+}
+#controls > *:first-child {
+  margin-top: 0;
+}
+#controls textarea {
+  height: 100%;
+  width: 100%;
+  min-height: 225px;
+  min-width: 350px;
+  max-width: calc(750px - 2rem);
+  flex: none;
+}
+#controls button {
+  display: inline-block;
+  width: fit-content;
 }

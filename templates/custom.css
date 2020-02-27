@@ -5,10 +5,6 @@
   --bg: #eeeeee;
   --text-color: #111111;
 }
-html,
-body {
-  background-color: var(--bg);
-}
 #preview {
   font-family: 'Roboto', sans-serif;
   background: var(--bg);

@@ -18,7 +18,7 @@
     />
     <link
       rel="stylesheet"
-      href="../user/custom.css"
+      href="../templates/custom.css"
       title="custom"
       class="resume-style"
     />
@@ -32,23 +32,26 @@
   </head>
   <body>
     <div id="controls">
-      <input type="file" id="file-upload" accept="text/markdown, .md, .txt" />
-      <button id="new-button">New Resume</button>
-      <button id="save-button">Save Markdown</button>
-      <form id="style-form">
-        <input type="radio" name="style" value="flat" checked />flat
-        <input type="radio" name="style" value="custom" />custom
-      </form>
       <label for="fileName">File Name: <span id="fileName"></span></label>
-      <button id="print-button">Print or Save PDF</button>
+      <button id="new-button">New Resume</button>
+      <label for="file-upload"
+        >Upload:
+        <input type="file" id="file-upload" accept="text/markdown, .md, .txt"
+      /></label>
+      <form id="style-form">
+        <span>Style: </span>
+        <label
+          ><input type="radio" name="style" value="flat" checked />flat</label
+        >
+        <label><input type="radio" name="style" value="custom" />custom</label>
+      </form>
+      <div class="save-buttons">
+        <button id="save-button">Save Markdown</button>
+        <button id="print-button">Save PDF or Print</button>
+      </div>
+      <textarea id="markdown-textarea"></textarea>
     </div>
-    <main>
-      <textarea
-        id="markdown-textarea"
-        style="height: 11in; width: 8.5in"
-      ></textarea>
-      <div id="preview"></div>
-    </main>
+    <div id="preview"></div>
     <script src="./app.js" />
   </body>
 </html>
