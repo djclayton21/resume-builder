@@ -6,13 +6,13 @@ This is a tool to help style resumes written in markdown in CSS. Once you set up
 
 1. Clone this repository
 2. Open `index.html` in your browser
-3. Replace placeholder tips and content with your own in basic markdown styntax.
+3. Replace placeholder tips and content with your own in basic markdown styntax
    - Edit in the browser for live updates **-OR-**
    - Save a copy and use your text editor
 4. Edit `custom.css` in the templates folder to create a custom style
 5. Download or print a copy of the active style using Print to PDF
    - Chrome's print to pdf is best at saving links
-   - You may need to adjust page margins if your resume is more than one page.
+   - You may need to adjust page margins if your resume is more than one page
 
 ## Under the hood
 
@@ -34,4 +34,4 @@ Some stuff I have in mind:
 - create style templates with adjustable color, font, etc.
 - allow CSS tweaks and file saving in browser
 - make/find a better in-browser text editor
-- parse and clean markdown input so that it can be safely hosted **-OR-** convert to an Electron app.
+- parse and clean markdown input so that it can be safely hosted **-OR-** convert to an Electron app
