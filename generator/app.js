@@ -4,6 +4,7 @@ const previewContainer = document.querySelector('#preview');
 const fileName = document.querySelector('#fileName');
 const resumeStylesheets = document.querySelectorAll('.resume-style');
 const mdInputArea = document.querySelector('#markdown-textarea');
+const styleForm = document.querySelector('#style-form');
 
 //setup file reader
 const mdReader = new FileReader();
@@ -14,17 +15,14 @@ mdReader.onload = event => {
 mdReader.onerror = () => {
   console.error('File could not be loaded');
 };
-//check for saved resume
-window.onload = () => {
-  localStorage.length ? getFromLocal() : getPlaceholder();
-};
 
-// initialize resume style to flat
-resumeStylesheets.forEach(style => {
-  if (style.title !== 'flat') {
-    style.disabled = true;
-  }
-});
+//check for saved data
+localStorage.mdResume ? getFromLocal() : getPlaceholder();
+const prevStyle = localStorage.getItem('resumeStyle') || 'flat';
+styleForm.querySelector(`input[value=${prevStyle}]`).checked = true;
+selectStyle(prevStyle)
+
+// remember resume style
 
 //listen for mardown file upload and read
 const upload = document.querySelector('#file-upload');
@@ -49,7 +47,7 @@ mdInputArea.addEventListener('input', event => {
   handleMarkdownUpdate(mdText);
 });
 
-//local storage
+//markdown text local storage
 function saveToLocal(text) {
   localStorage.setItem('mdResume', text);
 }
@@ -124,14 +122,13 @@ function preview(sections) {
 }
 
 //change resume styles
-const styleForm = document.querySelector('#style-form');
-styleForm.addEventListener('change', selectStyle);
+styleForm.addEventListener('change', event => selectStyle(event.target.value));
 
-function selectStyle() {
-  const newStyle = this.style.value;
+function selectStyle(newStyle) {
   resumeStylesheets.forEach(style => {
     if (style.title === newStyle) {
       style.disabled = false;
+      localStorage.setItem('resumeStyle', newStyle);
     } else {
       style.disabled = true;
     }
