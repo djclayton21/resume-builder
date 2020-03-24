@@ -20,7 +20,7 @@ mdReader.onerror = () => {
 localStorage.mdResume ? getFromLocal() : getPlaceholder();
 const prevStyle = localStorage.getItem('resumeStyle') || 'flat';
 styleForm.querySelector(`input[value=${prevStyle}]`).checked = true;
-selectStyle(prevStyle)
+selectStyle(prevStyle);
 
 // remember resume style
 
@@ -101,7 +101,7 @@ function convert(html) {
       newSection.classList.add(
         element.textContent
           .split(' ')
-          .join('_')
+          .join('-')
           .toLowerCase()
       );
       newSection.appendChild(element);

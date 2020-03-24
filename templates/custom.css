@@ -1,16 +1,18 @@
 /* variables */
-#preview {
+#preview-wrapper {
   --main-color: green;
   --highlight-color: blue;
   --bg: #eeeeee;
   --text-color: #111111;
+  background: var(--bg);
 }
 #preview {
   font-family: 'Roboto', sans-serif;
   background: var(--bg);
   color: var(--text-color);
   display: grid;
-  grid-template: auto / 2fr 3fr;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: min-content;
 }
 /* base styles*/
 h1 {
@@ -21,7 +23,7 @@ h1 {
 }
 h2 {
   text-transform: uppercase;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 700;
   margin: 1rem 0;
 }
@@ -52,63 +54,66 @@ ul:last-child {
   margin-bottom: 0;
 }
 section {
-  padding: 0 2rem;
+  padding: 0 1rem;
 }
-#section1 {
+.dan-clayton {
   background: var(--main-color);
   color: var(--bg);
-  padding: 1rem 3rem;
-  grid-column: 1/-1;
+  padding: 1rem;
+  grid-column: 1/3;
+  grid-row: 1/2;
 }
-#section1 h2 {
+.dan-clayton h2 {
   font-size: 3rem;
 }
-#section1 h3 {
+.dan-clayton h3 {
   font-size: 1.6rem;
 }
-#section3 ul,
-#section4 ul {
+.technical-skills ul,
+.other-skills ul {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
 }
-#section3 li,
-#section4 li {
+.technical-skills li,
+.other-skills li {
   flex: 0 1 content;
   padding: 0.1rem;
 }
-#section3 li:after,
-#section4 li:after {
+.technical-skills li:after,
+.other-skills li:after {
   content: ',';
 }
-#section3 li:last-child:after,
-#section4 li:last-child:after {
+.technical-skills li:last-child:after,
+.other-skills li:last-child:after {
   content: '';
 }
-#section2,
-#section3,
-#section4,
-#section5 {
-  text-align: right;
+.objective {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+.contact,
+.technical-skills,
+.other-skills,
+.education {
   grid-column: 1/2;
-  border-right: 2px solid var(--main-color);
+  text-align: right;
 }
-#section6 {
+.projects {
   grid-column: 2/3;
-  grid-row: 2/5;
-  page-break-inside: avoid;
+  grid-row: 3/7;
 }
-#section7 {
-  grid-column: 2/3;
+.work-history {
+  display: none;
 }
-#section7 li:before {
+.work-history li:before {
   content: '-';
 }
-#section6 p,
-#section7 p,
-#section6 li,
-#section7 li {
+.projects p,
+.work-history p,
+.projects li,
+.work-history li {
   font-size: 0.9rem;
 }
 

@@ -55,9 +55,6 @@ ul {
 li {
   min-width: 50%;
 }
-section {
-  break-inside: avoid;
-}
 
 a {
   color: blue;

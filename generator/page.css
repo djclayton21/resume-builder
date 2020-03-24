@@ -19,7 +19,7 @@ body {
   column-gap: 1rem;
 }
 
-#preview {
+#preview-wrapper {
   width: 8.5in;
   margin: 0 auto;
   height: fit-content;
