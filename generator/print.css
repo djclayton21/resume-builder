@@ -1,11 +1,11 @@
 body * {
   visibility: hidden;
 }
-#preview,
-#preview * {
+#preview-wrapper,
+#preview-wrapper * {
   visibility: visible;
 }
-#preview {
+#preview-wrapper {
   position: absolute;
   left: 0;
   top: 0;
