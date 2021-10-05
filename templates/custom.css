@@ -13,6 +13,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 8rem repeat(8, 8rem);
+  height: 11in;
+  overflow: hidden;
 }
 /* base styles*/
 h1 {
@@ -151,6 +153,8 @@ ul:last-child {
   grid-column: 2/-1;
   padding-left: 1rem;
   padding-right: 2rem;
+  position: relative;
+  top: -66px;
 }
 
 .work-history li:before {
