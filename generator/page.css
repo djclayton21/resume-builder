@@ -47,7 +47,6 @@ body {
   margin-top: 0;
 }
 #controls textarea {
-  height: 100%;
   width: 100%;
   min-height: 225px;
   min-width: 350px;
